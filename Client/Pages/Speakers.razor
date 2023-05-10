@@ -2,7 +2,7 @@
 @using BlazorApp.Shared
 @inject HttpClient Http
 
-<BlazorApp.Client.Components.TitleComponent TitleText="Speakers" />
+<h1>Speakers</h1>
 
 @if (speakers == null)
 {
@@ -10,10 +10,19 @@
 }
 else
 {
-    <div class="grid grid-cols-2 gap-8 mt-24">
+    <div>
         @foreach (var speaker in speakers)
         {
-            <BlazorApp.Client.Components.SpeakerComponent Person="speaker" />
+            <div>
+                <img src="@speaker.Image">
+
+                <div>
+                    <span>
+                        @speaker.Name
+                    </span>
+                    <span>@speaker.Tag</span>
+                </div>
+            </div>
         }
     </div>
 }
