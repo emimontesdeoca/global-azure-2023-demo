@@ -1,17 +1,28 @@
 ﻿@inherits LayoutComponentBase
 
-<div class="page">
-    <div class="sidebar">
-        <NavMenu />
-    </div>
-
-    <main>
-        <div class="top-row px-4">
-            <a href="https://docs.microsoft.com/aspnet/" target="_blank">About</a>
+<header>
+    <nav class="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
+        <div class="flex lg:flex-1">
+            <a href="#" class="-m-1.5 p-1.5">
+                <p class="font-mono font-extrabold text-xl dark:text-white">
+                    &lt;Global Azure Spain /&gt;
+                </p>
+            </a>
         </div>
+        <div class="flex gap-x-12">
+            <a href="/" class="text-sm font-semibold leading-6 text-gray-900 dark:text-white">Index</a>
+            <a href="/speakers" class="text-sm font-semibold leading-6 text-gray-900 dark:text-white">Speakers</a>
+        </div>
+        <div class="flex flex-1 justify-end">
+            <BlazorApp.Client.Components.LightToggle />
+        </div>
+    </nav>
+</header>
 
-        <article class="content px-4">
+<main>
+    <div class="relative px-6 px-8">
+        <div class="mx-auto max-w-4xl pt-24">
             @Body
-        </article>
-    </main>
-</div>
+        </div>
+    </div>
+</main>

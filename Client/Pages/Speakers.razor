@@ -1,0 +1,35 @@
+﻿@page "/speakers"
+@using BlazorApp.Shared
+@inject HttpClient Http
+
+<BlazorApp.Client.Components.TitleComponent TitleText="Speakers" />
+
+@if (speakers == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <div class="grid grid-cols-2 gap-8 mt-24">
+        @foreach (var speaker in speakers)
+        {
+            <BlazorApp.Client.Components.SpeakerComponent Person="speaker" />
+        }
+    </div>
+}
+
+@code {
+    private Speaker[] speakers = new Speaker[] { };
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            speakers = await Http.GetFromJsonAsync<Speaker[]>("/api/Speakers") ?? new Speaker[] { };
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.ToString());
+        }
+    }
+}
